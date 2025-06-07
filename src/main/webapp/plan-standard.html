@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hostinger Cart</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4ff;
+    }
+
+    .banner {
+      background: linear-gradient(90deg, #6c63ff, #a084e8);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      border-radius: 20px;
+      margin: 20px auto;
+      max-width: 900px;
+    }
+
+    .timer-box {
+      background-color: #7b61ff;
+      padding: 15px 25px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .timer-box small {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .main {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .left, .right {
+      background-color: #fff;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      flex: 1;
+    }
+
+    h2 {
+      color: #2d1152;
+    }
+
+    .dropdown {
+      margin: 15px 0;
+    }
+
+    select {
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .price-row .old-price {
+      text-decoration: line-through;
+      color: gray;
+      margin-left: 10px;
+    }
+
+    .save-btn {
+      background-color: #00b388;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: default;
+    }
+
+    .note {
+      background-color: #e3f9f2;
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .note strong {
+      font-weight: bold;
+    }
+
+    /* Right side - summary */
+    .right h3 {
+      margin-top: 0;
+      color: #2d1152;
+    }
+
+    .subtotal, .discount {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+
+    .old-subtotal {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .continue-btn {
+      background-color: #6c63ff;
+      color: white;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border: none;
+    }
+
+    .coupon {
+      color: #6c63ff;
+      font-weight: 500;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .guarantee {
+      margin-top: 20px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="banner">
+    <div class="timer-box">
+      <small>Don’t miss out!</small>
+     <strong id="countdown">03 : 02 : 12 : 39</strong>
+
+    </div>
+    <div>
+      <strong>+ 3 months free with a 48-month plan</strong>
+    </div>
+  </div>
+
+  <!-- Main Cart Section -->
+  <div class="main">
+    <!-- Left: Product Cart -->
+    <div class="left">
+      <h2>Your cart</h2>
+      <h3>Premium Web Hosting</h3>
+      <div class="dropdown">
+        <label for="period">Period</label><br>
+        <select id="period">
+          <option selected>48 months</option>
+          <option>24 months</option>
+          <option>12 months</option>
+        </select>
+      </div>
+      <div class="price-row">
+        <button class="save-btn">SAVE ₹21,600.00</button>
+        <div>
+          <strong>₹149.00/month</strong>
+          <span class="old-price">₹599.00/month</span>
+        </div>
+      </div>
+      <div class="note">
+        Great news! Your <strong>FREE</strong> domain + 3 months <strong>FREE</strong> are included with this order.
+      </div>
+    </div>
+
+    <!-- Right: Summary -->
+    <div class="right">
+      <h3>Subtotal</h3>
+      <div class="subtotal">
+        <span class="old-subtotal">₹28,752.00</span>
+        <span><strong>₹7,152.00</strong></span>
+      </div>
+      <div class="discount">
+        <span>Discount -75%</span>
+        <span style="color: #00b388;">-₹21,600.00</span>
+      </div>
+      <div class="coupon">Have a coupon code?</div>
+      <button class="continue-btn" onclick="window.location.href='employeeRegister.jsp'">Continue</button>
+      <div class="guarantee">💫 30-day money-back guarantee</div>
+    </div>
+  </div>
+<script>
+  // Set the deadline (e.g., 3 days from now)
+  const deadline = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000); // 3 days from now
+
+  function updateTimer() {
+    const now = new Date();
+    const diff = deadline - now;
+
+    if (diff <= 0) {
+      document.getElementById("countdown").textContent = "00 : 00 : 00 : 00";
+      clearInterval(timerInterval);
+      return;
+    }
+
+    const days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+    const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+    const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+    const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+    document.getElementById("countdown").textContent = `${days} : ${hours} : ${minutes} : ${seconds}`;
+  }
+
+  updateTimer(); // Run once immediately
+  const timerInterval = setInterval(updateTimer, 1000); // Then update every second
+</script>
+
+</body>
+</html>

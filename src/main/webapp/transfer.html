@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Domain Transfer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9ff;
+      color: #2d2e32;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2d006b;
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 1rem;
+      margin-bottom: 5px;
+      color: #2d006b;
+    }
+
+    .price strong {
+      font-weight: 600;
+    }
+
+    .amount {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #2d006b;
+      margin-bottom: 20px;
+    }
+
+    .subtext {
+      font-size: 1rem;
+      color: #5f5f7b;
+      margin-bottom: 40px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px #e1e1f0;
+      padding: 8px;
+      max-width: 550px;
+      margin: 0 auto 20px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+      padding: 12px;
+      font-size: 1rem;
+    }
+
+    .search-box input::placeholder {
+      color: #a0a0b2;
+    }
+
+    .search-box button {
+      background-color: #673de6;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .search-box button:hover {
+      background-color: #5025d1;
+    }
+
+    .below-link {
+      font-size: 0.95rem;
+      color: #5f5f7b;
+    }
+
+    .below-link a {
+      color: #673de6;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    .below-link a:hover {
+      text-decoration: underline;
+    }
+
+    .search-box::before {
+      content: "🔍";
+      margin-right: 10px;
+      color: #999;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Domain transfer made easy</h1>
+    <div class="price"><strong>.com</strong> from</div>
+    <div class="amount">₹ 879.00</div>
+    <div class="subtext">Enter the domain that you would like to transfer to Hostinger</div>
+
+    <div class="search-box">
+      <input type="text" id="domainInput" placeholder="Enter the domain you want to transfer" />
+      <button onclick="transferDomain()">Transfer</button>
+    </div>
+
+    <div class="below-link">
+      Looking for a new domain name?
+      <a href="#">Try domain checker</a>
+    </div>
+  </div>
+
+  <script>
+    function transferDomain() {
+      const domain = document.getElementById('domainInput').value.trim();
+      if (!domain) {
+        alert("Please enter a domain name to transfer.");
+        return;
+      }
+      // Simulate action — this can be replaced with a real API or redirect.
+      alert("Transferring domain: " + domain);
+      // Example: Redirect (uncomment to use)
+      // window.location.href = `https://www.hostinger.com/domain-transfer?domain=${encodeURIComponent(domain)}`;
+    }
+  </script>
+</body>
+</html>

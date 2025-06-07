@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Domain Search</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    p.subtext {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    .tab-buttons {
+      background-color: #2d1a65;
+      border-radius: 40px;
+      display: inline-flex;
+      padding: 6px;
+      margin-bottom: 30px;
+    }
+
+    .tab-buttons button {
+      background: none;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .tab-buttons .active {
+      background-color: #cfd9ff;
+      color: #1f0f4c;
+    }
+
+    .search-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      padding: 12px;
+      font-size: 16px;
+      flex-grow: 1;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .search-box button {
+      background-color: #7a44f2;
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .domain-pricing {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .domain-box {
+      background-color: transparent;
+      border: 1px solid #5e4aaf;
+      border-radius: 12px;
+      padding: 16px 24px;
+      width: 120px;
+      color: white;
+    }
+
+    .domain-box .tld {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .domain-box .old-price {
+      text-decoration: line-through;
+      color: #aaa;
+      font-size: 12px;
+    }
+
+    .domain-box .new-price {
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #bbb;
+    }
+    .popular-domains {
+    background: #f9f8ff;
+    padding: 60px 20px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .popular-domains h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f0f4c;
+    margin-bottom: 40px;
+  }
+
+  .domain-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
+
+  .domain-card {
+    background: white;
+    border: 1px solid #e3e3e9;
+    border-radius: 16px;
+    padding: 30px 24px;
+    max-width: 280px;
+    flex: 1 1 260px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.03);
+  }
+
+  .tld-logo {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .domain-card p {
+    font-size: 14px;
+    color: #333;
+    margin: 10px 0 20px;
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .old-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 14px;
+  }
+
+  .discount-badge {
+    background-color: #e5d9ff;
+    color: #5f2deb;
+    font-weight: 600;
+    border-radius: 12px;
+    font-size: 12px;
+    padding: 2px 10px;
+  }
+
+  .new-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2e1065;
+    margin-bottom: 20px;
+  }
+
+  .per-year {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-left: 4px;
+  }
+
+  .register-btn {
+    background-color: #7a44f2;
+    color: white;
+    font-weight: 600;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
+  }
+  .register-btn:hover {
+    background-color: #6d3de0;
+  }
+  .domain-section {
+  background-color: white;
+  padding: 60px 20px;
+}
+  
+  .domain-cards {
+  display: flex;
+  background: white;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.domain-card {
+  background: white;
+  border: 1px solid #e3e3e9;
+  border-radius: 16px;
+  padding: 30px 24px;
+  max-width: 280px;
+  flex: 1 1 260px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.03);
+  text-align: center;
+}
+
+.tld-logo {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.domain-card p {
+  font-size: 14px;
+  color: #333;
+  margin: 10px 0 20px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 14px;
+}
+
+.discount-badge {
+  background-color: #e5d9ff;
+  color: #5f2deb;
+  font-weight: 600;
+  border-radius: 12px;
+  font-size: 12px;
+  padding: 2px 10px;
+}
+
+.new-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2e1065;
+  margin-bottom: 20px;
+}
+
+.per-year {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-left: 4px;
+}
+
+.register-btn {
+  background-color: #7a44f2;
+  color: white;
+  font-weight: 600;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 14px;
+}
+
+.register-btn:hover {
+  background-color: #6d3de0;
+}
+  
+  </style>
+</head>
+<body>
+  <h1>Search for a domain name</h1>
+  <p class="subtext">
+    Discover, buy and register your unique domain with our domain name search or AI domain generator
+  </p>
+
+  <div class="tab-buttons">
+    <button class="active">Domain search</button>
+    <button>✨ AI domain generator</button>
+  </div>
+
+  <div class="search-box">
+    <input type="text" placeholder="Type in that perfect domain name" />
+    <button>Search</button>
+  </div>
+
+  <div class="domain-pricing">
+    <div class="domain-box">
+      <div class="tld">.in</div>
+      <div class="old-price">₹729.00</div>
+      <div class="new-price">₹429.00</div>
+    </div>
+    <div class="domain-box">
+      <div class="tld">.com</div>
+      <div class="old-price">₹1,179.00</div>
+      <div class="new-price">₹749.00</div>
+    </div>
+    <div class="domain-box">
+      <div class="tld">.online</div>
+      <div class="old-price">₹2,859.00</div>
+      <div class="new-price">₹169.00</div>
+    </div>
+    <div class="domain-box">
+      <div class="tld">.shop</div>
+      <div class="old-price">₹2,859.00</div>
+      <div class="new-price">₹89.00</div>
+    </div>
+    <div class="domain-box">
+      <div class="tld">.org</div>
+      <div class="old-price">₹1,299.00</div>
+      <div class="new-price">₹699.00</div>
+    </div>
+    <div class="domain-box">
+      <div class="tld">.xyz</div>
+      <div class="old-price">₹1,299.00</div>
+      <div class="new-price">₹179.00</div>
+    </div>
+  </div>
+
+  <p class="note">
+    Free WHOIS privacy protection is included with every eligible domain registration.
+  </p>
+  <section class="popular-domains">
+  <h2>Choose from the most popular domains</h2>
+  <div class="domain-cards">
+    <!-- .in card -->
+    <div class="domain-card">
+      <h3 class="tld-logo" style="color:black;">•<strong>in</strong></h3>
+      <p>.in is a unique symbol of India.</p>
+      <div class="price-row">
+        <span class="old-price">₹ 729.00</span>
+        <span class="discount-badge">SAVE 73%</span>
+      </div>
+      <div class="new-price">₹ 429.00<span class="per-year">/year</span></div>
+      <button class="register-btn" onclick="window.location.href='employeeRegister.jsp'">Register</button>
+    </div>
+
+    <!-- .com card -->
+    <div class="domain-card">
+      <h3 class="tld-logo" style="color:#0073e6;">•<strong>com</strong></h3>
+      <p>Build trust with this best-known domain.</p>
+      <div class="price-row">
+        <span class="old-price">₹ 1,179.00</span>
+        <span class="discount-badge">SAVE 58%</span>
+      </div>
+      <div class="new-price">₹ 749.00<span class="per-year">/year</span></div>
+      <button class="register-btn" onclick="window.location.href='employeeRegister.jsp'">Register</button>
+    </div>
+
+    <!-- .online card -->
+    <div class="domain-card">
+      <h3 class="tld-logo" style="color:#00aa00;">•<strong>online</strong></h3>
+      <p>It’s a broad and universal alternative to .com.</p>
+      <div class="price-row">
+        <span class="old-price">₹ 2,859.00</span>
+        <span class="discount-badge">SAVE 94%</span>
+      </div>
+      <div class="new-price">₹ 169.00<span class="per-year">/year</span></div>
+      <button class="register-btn" onclick="window.location.href='employeeRegister.jsp'">Register</button>
+    </div>
+  </div>
+</section>
+<div class="domain-cards">
+  <!-- .io card -->
+  <div class="domain-card">
+    <h3 class="tld-logo" style="color:#68b300;">🟩<strong>.shop</strong></h3>
+    <p>Perfect for tech startups.</p>
+    <div class="price-row">
+      <span class="old-price">₹ 5,149.00</span>
+      <span class="discount-badge">SAVE 46%</span>
+    </div>
+    <div class="new-price">₹ 2,799.00<span class="per-year">/year</span></div>
+   <button class="register-btn" onclick="window.location.href='employeeRegister.jsp'">Register</button>
+  </div>
+
+  <!-- .icu card -->
+  <div class="domain-card">
+    <h3 class="tld-logo">
+      <span style="color:#0d47a1;">•</span><span style="color:#f44336;">o</span><span style="color:#ff9800;">r</span><span style="color:#ffeb3b;">g</span>
+    </h3>
+    <p>Show your clients you are open for business.</p>
+    <div class="price-row">
+      <span class="old-price">₹ 1,399.00</span>
+      <span class="discount-badge">SAVE 94%</span>
+    </div>
+    <div class="new-price">₹ 89.00<span class="per-year">/year</span></div>
+   <button class="register-btn" onclick="window.location.href='employeeRegister.jsp'">Register</button>
+  </div>
+
+  <!-- .xyz card -->
+  <div class="domain-card">
+    <h3 class="tld-logo" style="background:#5e2ced; color:white; padding: 4px 12px; border-radius: 10px; display: inline-block;">.xyz</h3>
+    <p>Unique and trending domain for your successful business.</p>
+    <div class="price-row">
+      <span class="old-price">₹ 1,229.00</span>
+      <span class="discount-badge">SAVE 85%</span>
+    </div>
+    <div class="new-price">₹ 179.00<span class="per-year">/year</span></div>
+   <button class="register-btn" onclick="window.location.href='employeeRegister.jsp'">Register</button>
+  </div>
+</div>
+<script>
+  document.querySelector('.search-box button').addEventListener('click', function () {
+    const input = document.querySelector('.search-box input').value.trim();
+
+    if (!input) {
+      alert("Please enter a domain name.");
+      return;
+    }
+
+    // Ensure the input has a TLD, if not add .com by default
+    let domain = input;
+    if (!domain.includes(".")) {
+      domain += ".com";
+    }
+
+    // Redirect to the domain
+    window.location.href = "https://" + domain;
+  });
+</script>
+
+
+</body>
+</html>

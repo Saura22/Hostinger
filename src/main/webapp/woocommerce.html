@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WordPress Hosting Promo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #111;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 100vh;
+    }
+    .left, .right {
+      flex: 1;
+      padding: 3rem;
+      box-sizing: border-box;
+    }
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .left h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #000;
+    }
+    .left ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+    }
+    .left ul li {
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+    }
+    .left ul li::before {
+      content: '✓ ';
+      color: #00c38a;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    .left .price {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .left .btn {
+      background-color: #6c47ff;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: fit-content;
+      text-decoration: none;
+    }
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .right img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .reviews {
+      background-color: #ffffff;
+      color: #111;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .reviews .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    .review {
+      min-width: 200px;
+      text-align: center;
+    }
+    .stars {
+      color: #00b386;
+      font-size: 1.5rem;
+    }
+    .rating {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+    .recommended {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+    .recommended img {
+      vertical-align: middle;
+      height: 20px;
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+    .pricing-section {
+  text-align: center;
+  padding: 3rem 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+}
+.recommendation {
+  color: #2e1c4f;
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+}
+.plans {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.plan {
+  border: 1px solid #e5e5f0;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  position: relative;
+  background: #fff;
+}
+.plan.popular {
+  border: 2px solid #6c47ff;
+  background-color: #f5f3ff;
+}
+.plan.popular .label {
+  background: #6c47ff;
+  color: white;
+  font-weight: bold;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-radius: 12px;
+  position: absolute;
+  top: -1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.plan h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #2e1c4f;
+}
+.plan p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+.price-line {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+}
+.discount {
+  background-color: #e6e8fc;
+  color: #2e1c4f;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+}
+.price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2e1c4f;
+}
+.mo {
+  font-size: 1rem;
+  font-weight: normal;
+}
+.extra {
+  font-size: 0.95rem;
+  color: #6c47ff;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+button {
+  background-color: #6c47ff;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.renew-note {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: #555;
+}
+@media (max-width: 768px) {
+  .plans {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.btn {
+  display: inline-block;
+  background-color: #6c47ff;
+  color: white;
+  text-align: center;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h1>Up to <span style="color:#6c47ff">64%off</span>WooCommerce hosting</h1>
+      <ul>
+        <li>Free domain and website migration</li>
+        <li>Quick setup, easy to scale</li>
+        <li>Fully managed maintenance for WooCommerce</li>
+        <li>24/7 customer support</li>
+      </ul>
+      <div class="price">₹249.00/mo <br><span style="font-size: 1rem;">+3 months free</span></div>
+      <a href="#plans" class="btn">Start now</a>
+
+    </div>
+    <div class="right">
+      <img src="Images/Screenshot 2025-05-23 032200.png" alt="Hosting Promo Screenshot 1">
+      
+    </div>
+  </div>
+
+  <div class="reviews">
+    <div class="row">
+      <div class="review">
+        <div><strong>Trustpilot</strong></div>
+        <div class="stars">★★★★★</div>
+        <div class="rating">TrustScore <strong>4.7</strong> 45,774 reviews</div>
+      </div>
+      <div class="review">
+        <div><strong>Google</strong></div>
+        <div class="stars">★★★★★</div>
+        <div class="rating">Rating: <strong>4.8/5</strong> 1,237 reviews</div>
+      </div>
+      <div class="review">
+        <div><strong><em>host</em>advice.</strong></div>
+        <div class="stars">★★★★★</div>
+        <div class="rating">Rating: <strong>4.6/5</strong> 2,432 reviews</div>
+      </div>
+      <div class="review">
+        <div><strong>wpbeginner</strong></div>
+        <div class="stars">★★★★★</div>
+        <div class="rating">Rating: <strong>4.7</strong> 874 reviews</div>
+      </div>
+    </div>
+    <div class="recommended">
+      <img src="https://s.w.org/about/images/logos/wordpress-logo-notext-rgb.png" alt="WordPress logo">
+      Recommended by <strong>WordPress.org</strong>
+    </div>
+    <div id="plans" class="pricing-section">
+
+  <p class="recommendation">Officially recommended by WordPress.org, our hosting services offer top-notch performance, AI tools, 24/7 support, and more.</p>
+  <div class="plans">
+    <div class="plan">
+      <h3>Single</h3>
+      <p>A great solution for beginners</p>
+      <div class="price-line">
+        <span class="old-price">₹ 399.00</span>
+        <span class="discount">SAVE 78%</span>
+      </div>
+      <div class="price">₹ 89.00<span class="mo">/mo</span></div>
+       <a href="plan-basic.html" class="btn">Choose plan</a>
+      <p class="renew-note">Renews at ₹289.00/mo for a year. Cancel anytime.</p>
+    </div>
+    <div class="plan popular">
+      <div class="label">MOST POPULAR</div>
+      <h3>Premium</h3>
+      <p>Everything you need to create your website.</p>
+      <div class="price-line">
+        <span class="old-price">₹ 599.00</span>
+        <span class="discount">SAVE 75%</span>
+      </div>
+      <div class="price">₹ 149.00<span class="mo">/mo</span></div>
+      <div class="extra">+3 months free</div>
+       <a href="plan-basic.html" class="btn">Choose plan</a>
+      <p class="renew-note">Renews at ₹449.00/mo for a year. Cancel anytime.</p>
+    </div>
+    <div class="plan">
+      <h3>Business</h3>
+      <p>Level up with more power and enhanced features.</p>
+      <div class="price-line">
+        <span class="old-price">₹ 699.00</span>
+        <span class="discount">SAVE 64%</span>
+      </div>
+      <div class="price">₹ 249.00<span class="mo">/mo</span></div>
+      <div class="extra">+3 months free</div>
+       <a href="plan-basic.html" class="btn">Choose plan</a>
+      <p class="renew-note">Renews at ₹649.00/mo for a year. Cancel anytime.</p>
+    </div>
+    <div class="plan">
+      <h3>Cloud Startup</h3>
+      <p>Enjoy optimised performance & guaranteed resources.</p>
+      <div class="price-line">
+        <span class="old-price">₹ 1,699.00</span>
+        <span class="discount">SAVE 65%</span>
+      </div>
+      <div class="price">₹ 599.00<span class="mo">/mo</span></div>
+      <div class="extra">+3 months free</div>
+       <a href="plan-basic.html" class="btn">Choose plan</a>
+      <p class="renew-note">Renews at ₹1,599.00/mo for a year. Cancel anytime.</p>
+    </div>
+  </div>
+</div>
+  </div>
+  <script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+</script>
+  
+</body>
+</html>
